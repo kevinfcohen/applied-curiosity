@@ -1,4 +1,4 @@
-name: Publish Fiber Field Lab
+name: Publish Fiber Quality Portfolio
 
 on:
   push:
@@ -27,16 +27,18 @@ jobs:
         uses: actions/checkout@v6
       - name: Validate JavaScript and required files
         run: |
-          node --check dist/app.js
-          node --check dist/sw.js
+          node --check dist/lab/app.js
+          node --check dist/lab/sw.js
           test -f dist/index.html
-          test -f dist/blueprint.html
-          test -f dist/manifest.webmanifest
-          test -f dist/icon-192.png
-          test -f dist/icon-512.png
+          test -f dist/measurement-integrity.html
+          test -f dist/predictive-quality.html
+          test -f dist/lab/blueprint.html
+          test -f dist/lab/manifest.webmanifest
+          test -f dist/lab/icon-192.png
+          test -f dist/lab/icon-512.png
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload the learning website
+      - name: Upload the portfolio website
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
